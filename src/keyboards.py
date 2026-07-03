@@ -11,5 +11,7 @@ keyboard_main = ReplyKeyboardMarkup(keyboard=[
 
 
 inline = InlineKeyboardMarkup(inline_keyboard=[
-    [InlineKeyboardButton(text="Наш сайт", url="https://geeks.kg", callback_data="geeks")],
+    [InlineKeyboardButton(text="Начать викторину", callback_data="quiz_start")],
+    [InlineKeyboardButton(text="Мой счет", callback_data="my_score")],
+    [InlineKeyboardButton(text="Наш сайт", url="https://geeks.kg", callback_data="geeks")]
 ])
