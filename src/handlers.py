@@ -6,6 +6,7 @@ from aiogram.fsm.state import State, StatesGroup
 
 from src.questions import QUESTIONS
 from src.keyboards import keyboard_main, inline
+from db.users import create_user, get_user
 
 router = Router()
 
@@ -17,8 +18,12 @@ class Quiz(StatesGroup):
 
 @router.message(CommandStart())
 async def cmd_start(message: Message):
+    user = create_user(
+        telegram_id=message.from_user.id,
+        username=message.from_user.username or "Аноним"
+    )
     await message.answer(
-        f"Привет, {message.from_user.first_name}! Я твой первый бот."
+        f"Привет, {message.from_user.first_name}! Я твой первый бот.\n {user}"
         )
     
     print(f"Пользователь {message.from_user.full_name}, его ID:{message.from_user.id}")

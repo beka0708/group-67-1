@@ -5,6 +5,7 @@ from aiogram.fsm.storage.memory import MemoryStorage
 
 from config import BOT_TOKEN
 from src.handlers import router
+from db.database import init_db
 
 
 bot = Bot(token=BOT_TOKEN)
@@ -12,6 +13,7 @@ dp = Dispatcher(storage=MemoryStorage())     # обработчик входящ
 
 
 async def main():
+    init_db()
     dp.include_router(router)
     await dp.start_polling(bot)     # отправляет запросы на тг-сервер
 
