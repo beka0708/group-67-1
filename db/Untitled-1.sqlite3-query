@@ -1,0 +1,21 @@
+-- database: /Users/bektur/geeks/group-67-1/db/quiz.db
+
+SELECT * FROM results;
+SELECT * FROM users;
+SELECT * FROM questions;
+
+
+SELECT username, question_text, is_correct 
+FROM results
+INNER JOIN users
+    ON users.id = results.user_id
+
+INNER JOIN questions
+    ON questions.id = results.question_id;
+
+
+
+SELECT question_text, is_correct
+FROM results
+INNER JOIN questions
+ON questions.id = results.question_id
